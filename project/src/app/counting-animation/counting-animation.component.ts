@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { countReset } from 'console';
+import { element } from 'protractor';
 
 
 @Component({
@@ -13,5 +15,18 @@ export class CountingAnimationComponent implements OnInit {
   ngOnInit(): void {
   }
   
-   counters  = document.querySelectorAll(".counter") ;
+  // public counter= document.getElementsByClassName("counter");
+  // public  target:number = +this.counter[0].getAttribute('data-target');
+
+  //   count :number  = +this.counter[0].textContent;
+  
+
+    
+    
+  //   thoi()
+  //   {
+  //     console.log("hi")
+  //   }
+   
+   
 }
