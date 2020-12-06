@@ -1,10 +1,16 @@
 
+
+
+<div class="left-container">
+    <app-left-nav></app-left-nav>
+</div>
+
 <div class="container">
     <div class="heading">Men' Collection</div>
     <div class="ontainer">
     <div class="item-row">
        
-        <div class="item1" *ngFor="let item of items">
+        <div class="item1" *ngFor="let item of items" [routerLink]="['/men-collection', item.name]" routerLinkActive="router-link-active" >
         <img src="{{item.link1}}" alt=""    >
             
             

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {Routes, RouterModule} from '@angular/router'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,11 @@ import { SaleComponent } from './sale/sale.component';
 import { NewCollectionComponent } from './new-collection/new-collection.component';
 import { MainComponent } from './main/main.component';
 import { MenComponent } from './men/men.component';
+import { LeftNavComponent } from './left-nav/left-nav.component';
+import { ItemToBuyComponent } from './item-to-buy/item-to-buy.component';
+
+import {appRoutes} from './app.routes'
+
 
 @NgModule({
   declarations: [
@@ -28,11 +35,14 @@ import { MenComponent } from './men/men.component';
     SaleComponent,
     NewCollectionComponent,
     MainComponent,
-    MenComponent
+    MenComponent,
+    LeftNavComponent,
+    ItemToBuyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

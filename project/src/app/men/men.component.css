@@ -1,4 +1,16 @@
 
+.left-container
+{
+    width: 20%;
+    height:350px;
+    
+    float: left;
+    position: relative;
+    margin-top: 70px;
+    padding-left: 20px;
+
+}
+
 .heading
 {
     font-size: 40px;
@@ -33,3 +45,4 @@
  
  
 }
+
