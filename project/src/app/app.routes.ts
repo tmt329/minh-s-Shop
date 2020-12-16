@@ -1,4 +1,5 @@
 
+import { Component } from '@angular/core';
 import {Routes} from '@angular/router';
 import { ItemToBuyComponent } from './item-to-buy/item-to-buy.component';
 
@@ -12,11 +13,21 @@ export const appRoutes : Routes = [
     },
     {
        path:"men-collection",
-       component: MenComponent
+       
+       children:[
+        {
+          path: "",
+          component: MenComponent ,
+ 
+        },
+        {
+          path: ':name' ,
+          component:ItemToBuyComponent 
+
+        }
+       ]
+       
     },
 
-    {
-        path:'men-collection/:name',
-        component: ItemToBuyComponent
-    }
+    
  ]

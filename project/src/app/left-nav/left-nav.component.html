@@ -1,21 +1,25 @@
 
 <div class="shose-type">
-    <div><a [routerLink]="['men-collection/name']" >Addidas</a></div>
-    <div><a href="">Nike</a></div>
-    <div><a href="">Sketcher</a></div>
+    <div><a  
+        (click)="onclick('addidas')"
+        >Addidas</a></div>
+    <div><a (click)="onclick('nike')">Nike</a></div>
+    <div><a (click)="onclick('sketcher')">Sketcher</a></div>
     
 </div>
 <hr>
 
-<div class="filter">
-    <select name="Sort by price" id="">
-        <option value="">Sort item by:</option>
-        <option value="">Highest price to lowest price</option>
-        <option value="">Lowest price to highest price</option>
-        <option value="">Lastest</option>
-        <option value="">Oldest</option>
+<div class="filter" >
+    <select [(ngModel)]="sort_type" (change)='selectChange(sort_type)' >
+        <option value=""  >Sort item by:</option>
+        <option value='1'>Highest price to lowest price</option>
+        <option value='2'>Lowest price to highest price</option>
+        <option value="3">Lastest</option>
+        <option value="4">Oldest</option>
     </select>
+    
 </div>
+<p>{{sort_type}}</p>
 <hr>
 <div class="heading">
     By Price 

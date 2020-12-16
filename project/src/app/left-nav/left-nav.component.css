@@ -62,3 +62,9 @@ i
     border: 1px solid black;
     
 }
+
+
+div a:hover
+{
+    cursor: pointer;
+}
