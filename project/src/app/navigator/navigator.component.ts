@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navigator',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigator.component.css']
 })
 export class NavigatorComponent implements OnInit {
-
-  constructor() { }
+  // auth:boolean=false;
+  auth:boolean=(localStorage.getItem('token')!=undefined) || false; 
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  
+    
+    this.authService.auth.subscribe(
+      auth => {this.auth = auth}
+    )
+    
+    
+    
+    console.log(this.auth);
+    
+
+  }
+  onLogOut()
+  {
+    localStorage.removeItem('token') ;
+    localStorage.removeItem('user');
+    this.authService.setAuth(false)
+    
   }
 
 }

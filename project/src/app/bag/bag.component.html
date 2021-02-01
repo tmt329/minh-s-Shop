@@ -1,0 +1,66 @@
+<div class="item" *ngIf="isEmpty==0 ; else itemBoard">
+    Bag is empty
+</div>
+<ng-template #itemBoard>
+    <div class="container">
+
+        <div class="left-container">
+            <div class="heading">Your Bag</div>
+            <div class="item-infor" *ngFor="let item of items,  let i = index" >
+                <div class="image" >
+                    <img src="{{item.product.link['link1']}}" alt="">
+                </div>
+                <div class="infor">
+                    <div class="name">
+                            {{item.product.name}}
+                    </div>
+                    <div>Price :{{item.product.price}} HK</div>
+                    
+                
+                    <div class="filter" >
+                        <label for="">Size </label>
+                        <select  [(ngModel)]="item.size" >
+                                <option value='36'>36</option>
+                                <option value='37'>37</option>
+                                <option value='38'>38</option>
+                                <option value='39'>39</option>
+                                <option value='40'>40</option>
+                                <option value='41'>41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                        </select>
+                        <label for="">Quantity</label>
+                        <select  [(ngModel)]="item.quantity" (change)='update()'>
+                            <option value="1">1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                    </select>
+                    
+                            
+                        
+                    </div>
+                    <button type="button" class="btn btn-warning" (click)="remove(item)">Remove</button>
+    
+    
+                </div>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="heading">Summary</div>
+            <div class="total">
+                <div class="total-left">Total</div>
+                <div class="total-right">{{total}} HK</div>
+            </div>
+        </div>
+        <hr>
+    
+    </div>
+    <button type="button" class="btn btn-success block" (click)="checkOut()">Check Out</button>
+    
+    
+</ng-template>
+

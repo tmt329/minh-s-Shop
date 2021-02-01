@@ -1,0 +1,59 @@
+<div class="heading">Check Out Information</div>
+<form [formGroup]="formCheckOut" (submit)="onSubmit()">
+    
+    <label for="firstName">First name</label>
+    <input type="text" placeholder="First Name" formControlName="firstName" value="hi" id='firstName'> 
+
+    <div class="warning">
+        <div *ngIf="formCheckOut.controls.firstName.touched && formCheckOut.controls.firstName.errors?.required">
+            Please enter your first name
+        </div>
+    </div>
+    
+    
+       
+    
+    <label for="lastName">Last name</label>
+    <input id='lastName' type="text" placeholder="Last Name" formControlName="lastName" value="{{user.lastName}}">
+    
+    <div class="warning">
+        <div *ngIf="formCheckOut.controls.lastName.touched && formCheckOut.controls.lastName.errors?.required">
+            Please enter your last name
+        </div>
+    </div>
+    <label for="address">Address</label>
+    <input id='address' type="text" placeholder="Address" formControlName="address" value="{{user.address}}">
+    
+    <div class="warning">
+        <div *ngIf="formCheckOut.controls.address.touched && formCheckOut.controls.address.errors">
+            Please enter your address
+        </div>
+    </div>
+    <label for="phoneNumber">Phone Number</label>
+    <input type="text" 
+    placeholder="Phone Number"
+    formControlName="phoneNumber"
+    >
+    
+     <div class="warning">
+        <div *ngIf="formCheckOut.controls.phoneNumber.touched &&
+        formCheckOut.controls.phoneNumber.errors ">
+            Please enter your phone number
+        </div>
+    </div>
+     <label for="email">Email</label>
+    <input type="email" placeholder="Email" formControlName="email" value="{{user.email}}"> 
+    
+    <div class="warning">
+        <div *ngIf="formCheckOut.controls.email.touched &&
+        formCheckOut.controls.email.errors">
+            Please enter your phone email
+        </div>
+    </div>
+    
+    
+    
+    
+    <input type="submit" class="but">
+
+</form>

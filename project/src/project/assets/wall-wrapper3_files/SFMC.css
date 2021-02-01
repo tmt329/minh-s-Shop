@@ -1,0 +1,119 @@
+
+
+/* The Modal (background) */
+.cpgmodal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 6000; /* Sit on top */
+    padding-top: 150px; /* Location of the box */
+    left: 0%;
+    top: 0%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#cpgframe {
+ width: 500px;
+ height: 525px;
+}
+
+@media only screen and (max-width: 455px) {
+    #cpgframe {width: 350px; height: 500px;}
+   .cpg-content {width: 350px!important; height: 350px!important;}
+ .cpgmodal {padding-top: 75px; /* Location of the box */
+
+}
+
+}
+
+/* Modal Content */
+.cpg-content {
+    margin: auto;
+    padding: 0px;
+    width: 500px;
+    height: 500px;
+    align: center;
+}
+
+
+/* The Close Button */
+.cpgclose {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cpgclose:hover,
+.cpgclose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* The Modal (background) */
+.cpgmodal3 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 6000; /* Sit on top */
+    padding-top: 200px; /* Location of the box */
+    left: 0%;
+    top: 0%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#cpgdiv3 {
+/* width: 800px;*/
+/* height: 600px;*/
+ padding: 35px;
+background:#fff;
+}
+
+#cpgdiv3 p {line-height: 20px;}
+
+/*
+@media only screen and (max-width: 445px) {
+    #cpgdiv3 {width: 350px; height: 350px;}
+   .cpg-content3 {width: 350px!important; height: 350px!important;}
+}
+*/
+
+@media only screen and (max-width: 900px) {
+/* Modal Content */
+.cpg-content3 {top: 100px;margin: 0 auto;padding: 0px;width: 80%!important;align: center;}
+.cpgmodal3 {padding-top: 125px; /* Location of the box */}
+}
+/* Modal Content */
+.cpg-content3 {
+    margin: 0 auto;
+    padding: 0px;
+    width: 800px;
+/*    height: 600px;*/
+    align: center;
+}
+
+
+/* The Close Button */
+.cpgclose3 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+ padding: 15px;
+}
+
+.cpgclose3:hover,
+.cpgclose3:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+

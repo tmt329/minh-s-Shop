@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router'
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,6 @@ import { TopComponent } from './navigator/top/top.component';
 import { WallWrapperComponent } from './wall-wrapper/wall-wrapper.component';
 import { TrendingComponent } from './trending/trending.component';
 import { MoreComponent } from './more/more.component';
-import { CountingAnimationComponent } from './counting-animation/counting-animation.component';
 import { FooterComponent } from './footer/footer.component';
 import { SaleComponent } from './sale/sale.component';
 import { NewCollectionComponent } from './new-collection/new-collection.component';
@@ -19,8 +18,18 @@ import { MenComponent } from './men/men.component';
 import { LeftNavComponent } from './left-nav/left-nav.component';
 import { ItemToBuyComponent } from './item-to-buy/item-to-buy.component';
 
-import {appRoutes} from './app.routes'
-
+import {appRoutes} from './app.routes';
+import { RegisterComponent } from './register/register.component';
+import { SignInComponent } from './sign-in/sign-in.component'
+import{HttpClientModule} from '@angular/common/http';
+import { MenCollectionComponent } from './men-collection/men-collection.component';
+import { WomenCollectionComponent } from './women-collection/women-collection.component';
+import { KidCollectionComponent } from './kid-collection/kid-collection.component';
+import { BagComponent } from './bag/bag.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { UserInforComponent } from './user-infor/user-infor.component';
+import { AdminComponent } from './admin/admin.component'
+import{AuthGuard} from './services/guards/auth.guard'
 
 @NgModule({
   declarations: [
@@ -30,22 +39,34 @@ import {appRoutes} from './app.routes'
     WallWrapperComponent,
     TrendingComponent,
     MoreComponent,
-    CountingAnimationComponent,
+    
     FooterComponent,
     SaleComponent,
     NewCollectionComponent,
     MainComponent,
     MenComponent,
     LeftNavComponent,
-    ItemToBuyComponent
+    ItemToBuyComponent,
+    RegisterComponent,
+    SignInComponent,
+    MenCollectionComponent,
+    WomenCollectionComponent,
+    KidCollectionComponent,
+    BagComponent,
+    CheckOutComponent,
+    UserInforComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

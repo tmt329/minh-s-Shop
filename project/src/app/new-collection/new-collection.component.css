@@ -98,8 +98,23 @@ a
     display: block;
     font-style: italic;
 }
-
-
+.items:hover
+{
+    cursor: pointer;
+}
+.item-name
+{
+    text-align: center;
+}
+.item-type 
+{
+    
+   text-align: center;
+}
+.item-price
+{
+    text-align: center;
+}
 
 @media (max-width:376px)
 {

@@ -37,7 +37,7 @@
 {
     height: 100%;
     
-    width: 3200px;
+    width: 4267px;
     display: flex;
 }
 #card-row::-webkit-scrollbar
@@ -49,6 +49,8 @@
     display: flex;
     margin-left: 10px;
     height: 530px;
+    width: 500px;
+
 }
 .card:hover
 {
@@ -60,6 +62,9 @@
     position: absolute;
     z-index: 10;
     
+}
+.cards-btn:hover{
+    cursor: pointer;
 }
 
 .cards-btn:hover
@@ -98,3 +103,16 @@
 {
     opacity: 0.7;
 }
+.card-img-top
+{
+    height: 300px;
+    
+}
+.btn 
+{  width: 50%;
+    padding: 5px 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+

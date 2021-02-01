@@ -1,16 +1,20 @@
 export class Product 
-{
-    static count=0;
+{   
+    
     public id:number;
     public name:string;
     public price:number;
     public type: string ;
+    public link: any;
+    public gender: string
 
-    constructor(name :string,price : number, type : string  )
+    constructor(id :number,name :string, gender:string, type : string, price : number, linkList  : any   )
     {
             this.name=name ;
             this.price = price;
+            this.gender=gender;
             this.type=type;
-            this.id= Product.count ++ ; 
+            this.id= id ; 
+            this.link= linkList;
     }
 }

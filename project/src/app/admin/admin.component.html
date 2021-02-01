@@ -1,0 +1,64 @@
+<div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <a class="nav-link " (click)="change(true)" [ngClass]="{border: display}" >Users</a>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link"  (click)="change(false)" [ngClass]="{border: !display}">Products</div>
+        </li>
+        
+      </ul>
+    </div>
+    <div class="card-block">
+        <table class="table table-bordered" *ngIf="display">
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+                <td><button type="button" class="btn btn-danger">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered" *ngIf="!display">
+            <thead>
+              <tr>
+                <th class="w-5">Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Gender</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Delete</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items">
+                  <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.type}}</td>
+                <td>{{item.gender}}</td>
+                <td>{{item.price}}</td>
+                <td><img src="{{item['link']['link1']}}" alt=""></td>
+                <td><button type="button" class="btn btn-danger">Delete</button></td>
+              </tr>
+            </tbody>
+            
+            
+             
+        </table>
+
+    </div>
+</div>

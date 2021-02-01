@@ -1,0 +1,21 @@
+.border
+{
+    border: solid black 5px;
+    font-weight: 600;
+}
+.nav-item
+{
+    cursor: pointer;
+}
+table{
+    table-layout: fixed;
+}
+.row
+{
+    min-width: 400px;
+}
+img{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}

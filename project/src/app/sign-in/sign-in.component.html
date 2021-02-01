@@ -1,0 +1,22 @@
+<div class="heading">Sign In</div>
+<form [formGroup]="logginForm" action="/auth/login" method="POST" (ngSubmit)="onSubmit()">
+    <div class=input-infor>
+        <input type="email"placeholder="Email"formControlName="email">
+        <div class="warning">
+            <div *ngIf="logginForm.controls.email.touched && logginForm.controls.email.errors">
+                Please enter email
+            </div>
+            <div *ngIf="emailErr">Wrong email</div>
+        </div>
+        
+    <input type="password" placeholder="password" formControlName="password">
+    <div class="warning">
+        <div *ngIf="logginForm.controls.password.touched && logginForm.controls.password.errors">
+            Please enter password
+        </div>
+        <div *ngIf="passErr">Wrong password</div>
+    </div>
+    </div>
+    
+    <input type="submit" value="Sign In" >
+</form>

@@ -11,8 +11,12 @@
     <div id="nav-right">
       <div id= "nav-right-item"> <a href=""><i class="fas fa-bell"></i> Notification</a></div>
       <div id= "nav-right-item"> <a href=""><i class="fas fa-question-circle"></i> Help</a></div>
-      <div id= "nav-right-item"> <a href="">Register</a></div>
-      <div id= "nav-right-item"> <a href="">Sign Up</a></div>
+      <div id= "nav-right-item"> <a  [routerLink]="['/register']" routerLinkActive="router-link-active" *ngIf="!auth" >Register</a>
+                                  <a [routerLink]="['/user']" routerLinkActive="router-link-active"   *ngIf="auth">User</a>
+      </div>
+      <div id= "nav-right-item"> <a [routerLink]="['/sign-in']" routerLinkActive="router-link-active" *ngIf="!auth" >Sign In</a>
+                                        <a href="" *ngIf="auth" (click)="onLogOut()">Sign Out</a>
+      </div>
     </div>
 
 </div>
@@ -36,12 +40,12 @@
   
       <div id="search-bar-bottom">
       <a [routerLink]="['/men-collection']" routerLinkActive="router-link-active" >Men</a>
-      <a href="">Women</a>
-      <a href="">Kids</a>  
+      <a [routerLink]="['/women-collection']" routerLinkActive="router-link-active" >Women</a>
+      <a [routerLink]="['/kids-collection']" routerLinkActive="router-link-active" >Kids</a>  
       </div>
 
   </div>
-  <div id= "shopping-icon"><a href=""><i class="fas fa-shopping-cart"></i></a> <div>
+  <div id= "shopping-icon"><a [routerLink]="['/bag']" routerLinkActive="router-link-active" ><i class="fas fa-shopping-cart"></i></a> <div>
    </div>
   
 

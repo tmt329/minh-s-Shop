@@ -68,3 +68,8 @@ div a:hover
 {
     cursor: pointer;
 }
+
+.size-items input
+{
+ margin: 5px;
+}

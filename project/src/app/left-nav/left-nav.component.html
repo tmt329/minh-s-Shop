@@ -19,32 +19,32 @@
     </select>
     
 </div>
-<p>{{sort_type}}</p>
+
 <hr>
-<div class="heading">
+<div class="heading" (change)="activate(price_1, price_2, price_3,price_4)">
     By Price 
     <div >
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="" [(ngModel)]="price_1" >
         <span class="price-sort-item"> Under 379kn</span>
     </div>
     <div >
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="" [(ngModel)]="price_2">
         <span class="price-sort-item"> 380 kn - 769 kn</span>
     </div>
     <div >
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="" [(ngModel)]="price_3">
         <span class="price-sort-item"> 770 kn - 1149 kn</span>
     </div>
     <div >
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="" [(ngModel)]="price_4">
         <span class="price-sort-item"> Over 1150 kn</span>
     </div>
 </div> 
     <hr>
-    <div class="heading">
+    <div class="heading" >
         On Sale
         <br>
-        <div><input type="checkbox" name="" id=""> Sale</div>
+        <div (change)="saleChange(sale)"><input type="checkbox" name="" id="" [(ngModel)]="sale"> Sale</div>
         
 
     </div>
@@ -68,12 +68,24 @@
     </div> -->
     <div class="heading">
         Size
-        <div class="size-items">
-            <input type="button" value="XS" name="Hi">
-            <input type="button" value="X">
-            <input type="button" value="M">
-            <input type="button" value="L">
-            <input type="button" value="XL">
-            <input type="button" value="XXL">
+        <div class="size-items" >
+            <input type="button" value="35" (click)="changeSize(35) ">
+            <input type="button" value="36" (click)="changeSize(36 )" >
+            <input type="button" value="37" (click)="changeSize(37 )">
+            <input type="button" value="38" (click)="changeSize(38 )">
+            <input type="button" value="39" (click)="changeSize(39 )">
+            <input type="button" value="40" (click)="changeSize(40 )">
+            <br>
+            
+            <input type="button" value="41" (click)="changeSize(41 )">
+            <input type="button" value="42" (click)="changeSize(42 )">
+            <input type="button" value="43" (click)="changeSize(43 )"> 
+            <input type="button" value="44" (click)="changeSize(44)">
+            <input type="button" value="45" (click)="changeSize(45 )">
+            <input type="button" value="46" (click)="changeSize(46 )">
+            
         </div>
+
+        <button type="button" class="btn btn-secondary btn-lg btn-block"   > <a href="/men-collection">Clear all </a></button>
+
     </div>
