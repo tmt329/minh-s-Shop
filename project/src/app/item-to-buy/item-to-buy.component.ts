@@ -13,7 +13,7 @@ export class ItemToBuyComponent implements OnInit {
   
   
   product :Product;
-  id: number ;
+  id: string ;
   constructor(
     public activatedRoute : ActivatedRoute,
     public productService : ProductService,
@@ -25,7 +25,7 @@ export class ItemToBuyComponent implements OnInit {
   
   
     
-     this.id=  + this.activatedRoute.snapshot.paramMap.get('id');
+     this.id= this.activatedRoute.snapshot.paramMap.get('id');
      
      
      this.productService.getProductsById(this.id).subscribe(res=> {

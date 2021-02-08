@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
+import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -12,9 +13,11 @@ export class UserInforComponent implements OnInit {
   user:User;
   display:boolean= true;
   
+  isAdmin:boolean ;
 
   
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService,
+    private authService :AuthService) { }
 
   ngOnInit(): void {
     var user = JSON.parse( localStorage.getItem('user'))
@@ -27,6 +30,26 @@ export class UserInforComponent implements OnInit {
         if(user!=null)
         this.user=user;
       })
+
+      this.authService.isAdmin.subscribe(
+        data =>{ 
+          if(data) {  
+            this.isAdmin=data
+            
+
+          }
+          else{
+            console.log("none");
+            
+          }
+        
+            }
+        
+      )
+
+      
+      
+
     
 
   }

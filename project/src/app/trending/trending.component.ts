@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product.class';
 import {CommonModule} from'@angular/common';
 import { Router } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-trending',
@@ -16,19 +17,17 @@ export class TrendingComponent implements OnInit {
   
   constructor(private http: HttpClient, 
 
-   private router : Router) { }
+   private router : Router, private productService : ProductService) { }
 
   ngOnInit(): void {
     
-      this.http.get(this.url).toPromise()
-      .then(res => {
-        for(let key in res)
-        {                  
-           
-          this.items.push(res[key])
-        }
-        
-        this.items.splice(15,this.items.length-16);
+    this.productService.getProducts();
+
+    this.productService.products.subscribe(data=>{
+      this.items.push(...data) ;
+
+      this.items.splice(15,this.items.length-16);
+
         
       })
       

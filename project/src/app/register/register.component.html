@@ -9,6 +9,9 @@
      *ngIf="formUser.controls.email.touched &&
     formUser.controls.email.errors "
      >Please enter a valid email address</span>
+     <span class=" alert-danger"
+     *ngIf="usedEmail"
+     >This email already exists</span>
     <input type="password" placeholder="password" formControlName="password">
     <span class=" alert-danger"
     *ngIf="formUser.controls.password.touched &&

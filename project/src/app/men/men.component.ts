@@ -53,7 +53,7 @@ export class MenComponent  {
         for(let key in res)
         {  
         
-          let item = new Product(res[key]['id'], res[key]['name'], res[key]['gender'], res[key]['type'], res[key]['price'], res[key]['link']);
+          let item = new Product(res[key]['_id'], res[key]['name'], res[key]['gender'], res[key]['type'], res[key]['price'], res[key]['link']);
           _items.push(item);
         }
         return _items
@@ -78,7 +78,7 @@ export class MenComponent  {
           for(let key in res)
           {  
           
-            let item = new Product(res[key]['id'], res[key]['name'], res[key]['gender'], res[key]['type'], res[key]['price'], res[key]['link']);
+            let item = new Product(res[key]['_id'], res[key]['name'], res[key]['gender'], res[key]['type'], res[key]['price'], res[key]['link']);
             _items.push(item);
           }
           return _items
@@ -105,7 +105,7 @@ export class MenComponent  {
           for(let key in res)
           {  
           
-            let item = new Product(res[key]['id'], res[key]['name'], res[key]['gender'], res[key]['type'], res[key]['price'], res[key]['link']);
+            let item = new Product(res[key]['_id'], res[key]['name'], res[key]['gender'], res[key]['type'], res[key]['price'], res[key]['link']);
             _items.push(item);
           }
           return _items

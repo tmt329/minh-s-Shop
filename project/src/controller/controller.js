@@ -1,30 +1,73 @@
-var db= require('../db.js')
 
-module.exports.index= function(req,res){
+var model= require('../model')
 
-    var item = db.get('items').value();
-    res.send(item ); 
-}
-module.exports.getId= function(req, res){
+module.exports.getAllItems= function(req,res){
+
     
-        var id= parseInt(req.params.id);
-        var item = db.get('items').find({id:id});
-        res.send(item );
+    model.item.find({}).then(
+        data=> res.send(data)
+    )
+
     
 }
+module.exports.getById= function(req, res){
+    
+        var id= req.params.id
+        
+        model.item.findById(id)
+        .then(data =>
+            res.send(data))
+}
+
+module.exports.postItem=(req, res ) =>
+    {       
+            
+            model.item.create(req.body)
+            .then(
+                res.send({status:'200'})
+            )
+            .catch(
+                err =>  res.send(err) 
+            )
+
+    }
+
+module.exports.putItem=(req, res)=>
+    {
+            var id= req.params.id;
+            console.log(req.body);
+            model.item.findByIdAndUpdate(id, req.body)
+            .then(data => res.send({status:"200"}))
+            .catch(err => res.send({err:err})) ;
+
+    }
+
+module.exports.deleteItem=(req, res) =>
+{
+     var id= req.params.id ;
+     console.log(id);
+     model.item.findByIdAndDelete(id)
+     .then(data=> res.send({status:"200"}))
+     .catch(err => res.send({err:err}))
+
+}
+
 
 module.exports.getMan=function(req,res)
 {
-    var item = db.get('items').filter(({gender})=> gender==='man');
-    res.send(item);
+   model.item.find({gender:"man"})
+   .then(data => res.send(data))
+   .catch(err=> res.send({err:err}))
 }
 module.exports.getWoman=function(req,res)
 {
-    var item = db.get('items').filter(({gender})=> gender==='woman');
-    res.send(item);
+    model.item.find({gender:"woman"})
+   .then(data => res.send(data))
+   .catch(err=> res.send({err:err}))
 }
 module.exports.getKid=function(req,res)
 {
-    var item = db.get('items').filter(({gender})=> gender==='kid');
-    res.send(item);
+    model.item.find({gender:"kid"})
+   .then(data => res.send(data))
+   .catch(err=> res.send({err:err}))
 }

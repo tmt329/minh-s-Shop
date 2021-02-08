@@ -1,8 +1,9 @@
-var db= require('../db');
+
 var jwt = require('jsonwebtoken');
-const { send, nextTick } = require('process');
+
 var cookie = require('cookie');
 var md5 = require("md5");
+var model =require('../model')
 
 module.exports.postNewUser= function(req,res)
 {   
@@ -10,17 +11,52 @@ module.exports.postNewUser= function(req,res)
         var data= req.body ;
         var password= data.password ;
         data.password= md5(password);  //hash password
-        data.id=100;
         
-        db.get("users").push(data).write() ;
+        model.user.findOne({email:req.body.email}) 
+        .then(
+            data => 
+            {
+                if(data) 
+                {
+                   
+                   
+                    return
+                    
+                }
+                else 
+                {
+                   return model.user.create({
+            
+                        email: req.body.email,
+                        password: req.body.password,
+                        firstName: req.body.firstName,
+                        lastName: req.body.lastName,
+                        birthday: req.body.birthday,
+                        address: req.body.address,
+                    }
+                    )
+                    
+                }
+            }
+        )
+        .then(data => 
+           { if(data) 
+            res.json({status : 200} )
+            else
+            res.json({err :"fail"})
+     } ) 
+        
+        .catch(err=> res.json({err : 'fail'}))
+
+      //  db.get("users").push(data).write() ;
       //  var token= jwt.sign({_id : user.id},"mk", {expiresIn:3600});
-        res.json({status:200})
+       
         
     
     }
     catch(err)
     {
-        console.log(err);
+         res.status(500).json('failed')
     }
     
 }
@@ -32,24 +68,33 @@ module.exports.postLogin= function(req,res) {
         var email = req.body.email ;
         var password =   req.body.password;
         
-        var user = db.get("users").find({email: email} ).value() ;
-        
-        if(!user)
-        {  
+        model.user.findOne({email: email})
+        .then( user=>
+            {
+                if(!user)
+                {  
             res.send({description: "wrong email"}) ;
             return;
-        }  
+                }  
         
-        if(user.password!= md5(password))
-        {
+            if(user.password!= md5(password))
+                {
             res.send({description:"wrong pass"}) ;
             return;
-        }
-
-        var token= jwt.sign({_id : user.id},"mk", {expiresIn:3600}); //o day them level cua user
-      
+                    }
+                
+            
         
-       return res.json( {status:200,token:token, user:user});
+            var token= jwt.sign({_id : user.id},"mk", {expiresIn:3600}); //o day them level cua user
+                  
+                    
+            return res.json( {status:200,token:token, user:user});
+            }
+            
+
+        )
+        .catch()
+        
 
    
     }
@@ -61,21 +106,3 @@ module.exports.postLogin= function(req,res) {
     }
 }
 
-module.exports.getPrivate= function(req,res,next)
-{try {
-    var cookies = cookie.parse(req.headers.cookie);
-    var token= cookies.token;
-      var auth = jwt.verify(token, "mk" ) ;
-      if(auth)
-      {
-         next()
-      }
-      
-    }
-    catch(err) 
-    {
-        res.redirect("/sign-in")
-    }
-}, (req,res,next)=>{
-        res.redirect("/")
-}

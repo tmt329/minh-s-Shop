@@ -1,7 +1,10 @@
-var db= require('../db.js')
+var model =require('../model')
 
 module.exports.getUsers=function(req,res)
 {
-    var item = db.get('users').value();
-    res.send(item ); 
+    model.user.find({})
+    .then(data=>res.send(data)
+        )
+    .catch(err=> res.send({err:err}))
 }
+

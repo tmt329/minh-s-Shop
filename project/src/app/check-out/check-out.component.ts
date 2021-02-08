@@ -71,6 +71,14 @@ export class CheckOutComponent implements OnInit {
         "client" : this.formCheckOut.value ,
         "cart" : items 
       }).subscribe(
+        (res:{status:number}) => 
+        { 
+          (res.status==200)
+          {
+              localStorage.removeItem('cart');
+              this.router.navigate['/']
+          }
+        }
 
       )
     }

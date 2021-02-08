@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import {Product} from './../models/product.class';
 import{HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: Product[] ;
+  public products:  Subject<Product[]> =new Subject<Product[]>()
   manProducts: Product[];
   womanProducts: Product[];
   kidsProducts:Product[];
@@ -19,18 +21,41 @@ export class ProductService {
     ) { 
       this.http=http;
       
-      this.url='https://mini-shop-9ac53-default-rtdb.europe-west1.firebasedatabase.app/items.json'
+      this.url='http://localhost:1000/api/items'
     }
   
   ngOnInit()
   {
-   
+   this.getProducts();
                   
   }
+
   
-  getProducts(url: string):Observable<Product[]>
+  setProduct(_products : Product[])
   {
-    return this.http.get<Product[]>(url)
+    this.products.next(_products);
+  }
+  
+  getProducts()
+  {
+      this.http.get<Product[]>(this.url)
+      .pipe(map(res => {
+        const _items: Product[] = [];
+        for (let key in res) {
+
+          let item = new Product(res[key]['_id'], res[key]['name'], res[key]['gender'], res[key]['type'], res[key]['price'], res[key]['link']);
+          _items.push(item);
+        }
+
+        return _items;
+      }
+      ))
+      .subscribe( 
+        items => {
+          
+         this.setProduct(items);
+        }
+      )
   }
   
   getManProducts():Observable<Product[]>
@@ -68,7 +93,7 @@ export class ProductService {
   }
   
 
-  getProductsById(id:number)
+  getProductsById(id:string)
   { 
     let api="//localhost:1000/api/items/id/";
     

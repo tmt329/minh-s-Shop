@@ -63,14 +63,22 @@ export class SignInComponent implements OnInit {
       (res:{status: number, description ?: string, token? :string, user? :any}) => {
         if(res.status == 200)
         {
-          this.user=res.user
+          this.user=res.user;
+          if(this.user['email']=="admin@admin")
+          {
+            this.authService.setAdmin(true);
+            
+            
+          }
           
           localStorage.setItem('token', res.token);
           localStorage.setItem('user',JSON.stringify(this.user))
           this.userService.setUser(this.user);
           this.authService.setAuth(true);
+         
           
-           this.router.navigate(['/'])
+          
+           this.router.navigate(['/user'])
         }
         else{
           if(res.description=='wrong email')

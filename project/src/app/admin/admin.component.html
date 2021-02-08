@@ -14,6 +14,7 @@
         <table class="table table-bordered" *ngIf="display">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Email</th>
@@ -21,44 +22,123 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+              <tr *ngFor="let user of users">
+                <td>{{user['_id']}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
                 <td><button type="button" class="btn btn-danger">Delete</button>
                 </td>
               </tr>
             </tbody>
         </table>
+        
+        <div class="products" *ngIf="!display">
+          <form [formGroup]="formItem" (ngSubmit)="submit()" id="xform">
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Name">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="type">Type</label>
+                <select class="form-control" formControlName="type">
+                  <option value="addidas">addidas</option>
+                  <option value='nike'>nike</option>
+                  <option value="sketcher">sketcher</option>
+                </select>
+                
+              </div>
+              <div class="form-group col-md-3">
+                <label for="gender">Gender</label>
+                <select class="form-control" formControlName="gender">
+                  <option value="man">man</option>
+                  <option value='woman'>woman</option>
+                  <option value="kid">kid</option>
+                </select>
+                
+              </div>  
+              <div class="form-group col-md-3">
+                <label for="inputPassword4">Price</label>
+                <input type="number" class="form-control" formControlName="price" placeholder="Price">
+              </div>
+            
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="">Link1</label>
+                <input type="text" class="form-control" formControlName="link1" placeholder="Link1">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="">Link2</label>
+                <input type="text" class="form-control" formControlName="link2" placeholder="Link2">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="">Link3</label>
+                <input type="text" class="form-control" formControlName="link3" placeholder="Link3">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="">Link4</label>
+                <input type="text" class="form-control" formControlName="link4" placeholder="Link4">
+              </div>
+            
+            </div>
+            <div class="btn"  *ngIf="submitDisplay">
+              <button type="submit" class="btn btn-primary" >Add</button>
+            </div>
+            <div class="btn"  *ngIf="!submitDisplay">
+              <button type="submit" class="btn btn-success" (click)='save()'>Save</button>
+              <button type="button" class="btn btn-warning" (click)="discard()">Discard</button>
+            </div>
 
-        <table class="table table-bordered" *ngIf="!display">
+          </form>
+
+
+
+       
+        <table class="table table-bordered" >
             <thead>
               <tr>
                 <th class="w-5">Id</th>
-                <th>Name</th>
+                <th (click)="onSort()">Name</th>
                 <th>Type</th>
                 <th>Gender</th>
                 <th>Price</th>
                 <th>Image</th>
-                <th>Delete</th>
+                <th>Action</th>
                 
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of items">
-                  <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.type}}</td>
-                <td>{{item.gender}}</td>
-                <td>{{item.price}}</td>
-                <td><img src="{{item['link']['link1']}}" alt=""></td>
-                <td><button type="button" class="btn btn-danger">Delete</button></td>
+              <tr *ngFor="let item of items  | sort : sortBy : sortValue ;index as i">
+                
+                  <td >{{item.id}}</td>
+                  <td >
+                    <input type="text" readonly class="form-control-plaintext"  id="name{{i}}"    value="{{item.name}}">
+                   </td>
+                  <td>
+                     <input type="text" readonly class="form-control-plaintext"  id="type{{i}}" value=" {{item.type}}"  > 
+                    </td>
+                  <td> <input type="text" readonly class="form-control-plaintext"  id="gender{{i}}" value="{{item.gender}}">
+                    </td>
+                  <td> <input type="text" readonly  class="form-control-plaintext"  id="price{{i}}" value="{{item.price}}">
+                    </td>
+                  <td><img src="{{item['link']['link1']}}" alt=""></td>
+                  <td><button type="button" class="btn btn-danger" (click)='delete(item)' >Delete</button>
+                    <button type="button" class="btn btn-success" (click)="edit(i)"  > Edit</button>
+                  </td>
+                
+                  
+                
+               
+                
               </tr>
             </tbody>
             
             
              
         </table>
+      </div>
 
     </div>
 </div>

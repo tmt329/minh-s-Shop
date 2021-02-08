@@ -16,7 +16,7 @@ export class BagComponent implements OnInit {
   quantity:number=1 ;
   products:Product[];
   items: ProductInBag[]= [];
-  isEmpty ;
+  isEmpty:number ;
   total: number=0 ;
   constructor(
     public productBagService: ProductsInBagService,
@@ -59,9 +59,16 @@ export class BagComponent implements OnInit {
     
   }
   checkOut()
-  {
-    localStorage.setItem('cart', JSON.stringify(this.items))
+  { if(this.items.length==0) 
+    {
+      this.isEmpty=0
+    }
+    else {
+      localStorage.setItem('cart', JSON.stringify(this.items))
     this.router.navigate(['/check-out']);
+    }
+
+    
   }
   update()
   {  this.total=0;

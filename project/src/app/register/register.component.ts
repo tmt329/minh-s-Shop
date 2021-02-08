@@ -13,6 +13,8 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
   
   public formUser: FormGroup;
+
+  usedEmail : boolean=false;
   
 
  
@@ -66,11 +68,17 @@ export class RegisterComponent implements OnInit {
     
     
       this.http.post("http://localhost:1000/auth/register" , this.formUser.value).subscribe(
-        (res:{status: number}) =>{
+        (res:{status ?: number, err ?:string}) =>{
 
           if(res.status == 200)
           { 
             this.router.navigate(['/sign-in'])
+          }
+          if(res.err=="fail")
+          { 
+            console.log(res.err);
+            
+            this.usedEmail=true;
           }
 
         }

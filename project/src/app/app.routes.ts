@@ -16,6 +16,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { UserInforComponent } from './user-infor/user-infor.component';
 import { WomenCollectionComponent } from './women-collection/women-collection.component';
 import{AuthGuard} from './services/guards/auth.guard'
+import { AdminGuard } from './services/guards/admin.guard';
 
 export const appRoutes : Routes = [
     {
@@ -95,7 +96,7 @@ export const appRoutes : Routes = [
     {
       path:"admin",
       component:AdminComponent,
-      canActivate:[AuthGuard]
+      canActivate:[AdminGuard]
     }
 
 

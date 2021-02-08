@@ -27,9 +27,11 @@ export class NavigatorComponent implements OnInit {
   }
   onLogOut()
   {
-    localStorage.removeItem('token') ;
-    localStorage.removeItem('user');
-    this.authService.setAuth(false)
+  
+    localStorage.clear();
+    
+    this.authService.setAuth(false);
+    this.authService.setAdmin(false);
     
   }
 

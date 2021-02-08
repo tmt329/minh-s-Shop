@@ -29,7 +29,9 @@ import { BagComponent } from './bag/bag.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { UserInforComponent } from './user-infor/user-infor.component';
 import { AdminComponent } from './admin/admin.component'
-import{AuthGuard} from './services/guards/auth.guard'
+import{AuthGuard} from './services/guards/auth.guard';
+import { SortPipe } from './pipe/sort.pipe'
+import { AdminGuard } from './services/guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import{AuthGuard} from './services/guards/auth.guard'
     BagComponent,
     CheckOutComponent,
     UserInforComponent,
-    AdminComponent
+    AdminComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,7 @@ import{AuthGuard} from './services/guards/auth.guard'
     HttpClientModule,
     
   ],
-  providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [AuthGuard, AdminGuard],
+  bootstrap: [AppComponent, ]
 })
 export class AppModule { }
