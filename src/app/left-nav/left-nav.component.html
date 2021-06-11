@@ -1,0 +1,91 @@
+
+<div class="shose-type">
+    <div><a  
+        (click)="onclick('addidas')"
+        >Addidas</a></div>
+    <div><a (click)="onclick('nike')">Nike</a></div>
+    <div><a (click)="onclick('sketcher')">Sketcher</a></div>
+    
+</div>
+<hr>
+
+<div class="filter" >
+    <select [(ngModel)]="sort_type" (change)='selectChange(sort_type)' >
+        <option value=""  >Sort item by:</option>
+        <option value='1'>Highest price to lowest price</option>
+        <option value='2'>Lowest price to highest price</option>
+        <option value="3">Lastest</option>
+        <option value="4">Oldest</option>
+    </select>
+    
+</div>
+
+<hr>
+<div class="heading" (change)="activate(price_1, price_2, price_3,price_4)">
+    By Price 
+    <div >
+        <input type="checkbox" name="" id="" [(ngModel)]="price_1" >
+        <span class="price-sort-item"> Under 379kn</span>
+    </div>
+    <div >
+        <input type="checkbox" name="" id="" [(ngModel)]="price_2">
+        <span class="price-sort-item"> 380 kn - 769 kn</span>
+    </div>
+    <div >
+        <input type="checkbox" name="" id="" [(ngModel)]="price_3">
+        <span class="price-sort-item"> 770 kn - 1149 kn</span>
+    </div>
+    <div >
+        <input type="checkbox" name="" id="" [(ngModel)]="price_4">
+        <span class="price-sort-item"> Over 1150 kn</span>
+    </div>
+</div> 
+    <hr>
+    <div class="heading" >
+        On Sale
+        <br>
+        <div (change)="saleChange(sale)"><input type="checkbox" name="" id="" [(ngModel)]="sale"> Sale</div>
+        
+
+    </div>
+    <hr>
+
+    <!-- <div class="heading">
+        Color
+        <div>
+            <i class="fas fa-circle " style="color:black "></i>
+            <i class="far fa-circle" style="color:black"></i>
+            <i class="fas fa-circle " style="color:red "></i>
+            <i class="fas fa-circle " style="color:rgb(18, 161, 18) "></i>
+            <i class="fas fa-circle " style="color:rgb(0, 102, 255) "></i>
+            <i class="fas fa-circle " style="color:rgb(255, 0, 170) "></i>
+            <i class="fas fa-circle " style="color:rgb(238, 255, 0) "></i>
+            
+            
+
+        </div>
+
+    </div> -->
+    <div class="heading">
+        Size
+        <div class="size-items" >
+            <input type="button" value="35" (click)="changeSize(35) ">
+            <input type="button" value="36" (click)="changeSize(36 )" >
+            <input type="button" value="37" (click)="changeSize(37 )">
+            <input type="button" value="38" (click)="changeSize(38 )">
+            <input type="button" value="39" (click)="changeSize(39 )">
+            <input type="button" value="40" (click)="changeSize(40 )">
+            <br>
+            
+            <input type="button" value="41" (click)="changeSize(41 )">
+            <input type="button" value="42" (click)="changeSize(42 )">
+            <input type="button" value="43" (click)="changeSize(43 )"> 
+            <input type="button" value="44" (click)="changeSize(44)">
+            <input type="button" value="45" (click)="changeSize(45 )">
+            <input type="button" value="46" (click)="changeSize(46 )">
+            
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-lg btn-block"  (click)='clear()' > Clear all</button>
+
+    </div>

@@ -1,0 +1,41 @@
+.parallax
+{ margin-top: 30px;
+    margin-bottom: 30px;
+    height: 100%;
+    background-image: url("src\assets\parallax.jpeg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    
+}
+.parallax-inner
+{   width: 100%;
+    height: 50%;
+    font-size: 20px;
+    
+    padding-top: 10%;
+    padding-bottom: 10%;
+    
+    text-align: center;
+    
+   
+}
+
+.parallax-text
+{
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+}
+.btn
+{
+    font-weight: bold;
+    
+}
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+      background-attachment: scroll;
+    }
+  }

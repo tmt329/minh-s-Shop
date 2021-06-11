@@ -1,0 +1,33 @@
+<div id="trending-container">
+    <div id="trending-container-heading"> 
+        Trending Now
+    </div>
+
+    <div id="trending-cards-containers">
+
+    <div id="card-row" >
+        <div class="card"  *ngFor="let item of items" (click)='navigate(item)'>
+            <img class="card-img-top" src="{{item['link']['link1']}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{item['name']}}</h5>
+              <p class="card-text">
+                {{item['price'] }}  HK
+              </p>
+              <p class=card-text>{{item['gender'] |uppercase }}</p>
+              <a  class="btn btn-light" >SHOP NOW</a>
+            </div>
+        </div>
+    
+    </div>   
+    
+    <div id="trending-nav">
+    <button id="btn-left" class="cards-btn" (click)="moveLeft()"><i class="fas fa-long-arrow-alt-left"></i></button>
+    <button id="btn-right" class="cards-btn" (click)="moveRight()" ><i class="fas fa-long-arrow-alt-right"></i></button>
+    </div>
+    
+
+    </div>
+
+    
+
+</div>

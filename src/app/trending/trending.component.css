@@ -1,0 +1,118 @@
+#trending-container
+{ margin-top: 20px;
+    width: 100%;
+    position: relative;
+    
+    align-items: center;
+
+
+}
+#trending-container-heading
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+#trending-cards-containers
+{   
+   
+    width: 1070px;
+    height: 555px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    overflow-y: hidden;
+    
+}
+#trending-cards-containers::-webkit-scrollbar{
+    
+}
+#card-row
+{
+    height: 100%;
+    
+    width: 4267px;
+    display: flex;
+}
+#card-row::-webkit-scrollbar
+{
+    width: 0;
+}
+.card
+{
+    display: flex;
+    margin-left: 10px;
+    height: 530px;
+    width: 500px;
+
+}
+.card:hover
+{
+    border: solid black 1px;
+    cursor: pointer;
+}
+.cards-btn
+{
+    position: absolute;
+    z-index: 10;
+    
+}
+.cards-btn:hover{
+    cursor: pointer;
+}
+
+.cards-btn:hover
+{
+    background-color: black;
+    color: aliceblue;
+    
+}
+#btn-left
+{
+    margin-left: 10px;
+    border-radius: 2px;
+    
+}
+#btn-right 
+{
+    right: 4px;
+    
+}
+#trending-nav
+{
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    margin-top: 250px;
+}
+#card-row a
+{
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    border: black solid;
+    
+}
+#card-row a:hover
+{
+    opacity: 0.7;
+}
+.card-img-top
+{
+    height: 300px;
+    
+}
+.btn 
+{  width: 50%;
+    padding: 5px 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+

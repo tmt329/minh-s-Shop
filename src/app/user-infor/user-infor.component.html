@@ -1,0 +1,97 @@
+
+<div class="card text-center">
+    <div class="card-header" >
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <a class="nav-link " (click)="change(true)" [ngClass]="{border: display}" >Profile</a>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" (click)="change(false)" [ngClass]="{border: !display}">Password</div>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin" >
+          <div class="nav-link"  [routerLink]="['/admin']" routerLinkActive="router-link-active"  >Management</div>
+        </li>
+
+        
+      </ul>
+    </div>
+    <div class="card-block">
+        <form action="" *ngIf="display">
+            
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label text-sm-left d-block">Email</label>
+                <div class="col-sm-10">
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{user.email}}">
+                </div>
+              </div>
+    
+             <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-sm-left d-inline-block">First Name</label>
+                <div class="col-sm-10">
+                  <input type="text" readonly class="form-control-plaintext" id="name" value="{{user.firstName}}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lastName" class="col-sm-2 col-form-label text-sm-left">Last Name</label>
+                <div class="col-sm-10">
+                  <input type="text" readonly class="form-control-plaintext" id="lastName" value="{{user.lastName}}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="birthday" class="col-sm-2 col-form-label text-sm-left">Birth Day</label>
+                <div class="col-sm-10">
+                  <input type="text" readonly class="form-control-plaintext" id="lastName" value="{{user.birthday |date: 'dd/MM/yyyy'}}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="address" class="col-sm-2 col-form-label text-sm-left">Address</label>
+                <div class="col-sm-10">
+                  <input type="text" readonly class="form-control-plaintext" id="address" value="{{user.address}}">
+                </div>
+              </div>
+
+
+        </form>
+
+        <form action="" *ngIf="!display" [formGroup]="formPassword">
+            <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label text-sm-left"> Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control " formControlName="password" id="password" placeholder="Password">
+                  <div class="warning">
+                    
+                    <div *ngIf="passwordErr">Wrong password</div>
+                </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label text-sm-left">New Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control " id="inputPassword" formControlName="newPass" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="reInputPassword" class="col-sm-2 col-form-label text-sm-left">Re Enter</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control " id="reInputPassword" formControlName="reNewPass" placeholder="Password">
+                  <div class="warning">
+                    
+                    <div *ngIf="rePassErr">Re-entering password is not correct</div>
+                   
+                </div>
+                </div>
+              </div>
+              <div class="warning">
+                    
+               
+                <div *ngIf="successful">Change password successful</div>
+            </div>
+              <button  class="btn btn-primary" (click)="changePass()">Change</button>
+
+        </form>
+        
+
+       
+
+    </div>
+  </div>

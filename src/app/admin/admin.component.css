@@ -1,0 +1,47 @@
+.border
+{
+    border: solid black 5px;
+    font-weight: 600;
+}
+.nav-item
+{
+    cursor: pointer;
+}
+table{
+    table-layout: fixed;
+}
+.row
+{
+    min-width: 400px;
+}
+img{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+button
+{
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form label
+{
+    font-weight: 600;
+    font-size: 20px;
+}
+#form
+{
+    display: block;
+}
+
+.warning
+    {   
+        display: block;
+        height: 20px;
+        /* margin-left: auto;
+        margin-right: auto; */
+        font-size: 15px;
+        color: red;
+    }

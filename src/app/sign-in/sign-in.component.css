@@ -1,0 +1,28 @@
+.heading
+{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+.input-infor
+{   display: block;
+    
+    
+    
+}
+form input
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.warning
+{   text-align: center;
+    
+    height: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 10px;
+    color: red;
+}

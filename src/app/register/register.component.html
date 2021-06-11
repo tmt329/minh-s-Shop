@@ -1,0 +1,50 @@
+<div class="heading">Sign Up</div>
+<div class="note">Already a member? <a [routerLink]="['/sign-in']" routerLinkActive="router-link-active"  >Sign In</a></div>
+<form [formGroup]="formUser" (ngSubmit)="onSubmit()" >
+    <input type="email" 
+    placeholder="Email Address"
+    formControlName="email"
+    >
+    <span class=" alert-danger"
+     *ngIf="formUser.controls.email.touched &&
+    formUser.controls.email.errors "
+     >Please enter a valid email address</span>
+     <span class=" alert-danger"
+     *ngIf="usedEmail"
+     >This email already exists</span>
+    <input type="password" placeholder="password" formControlName="password">
+    <span class=" alert-danger"
+    *ngIf="formUser.controls.password.touched &&
+    formUser.controls.password.errors"
+    >
+    Please enter a password from 6 characters
+    </span>
+    <input type="text" placeholder="First Name" formControlName="firstName"> 
+
+    <span  class=" alert-danger"
+    *ngIf="formUser.controls.firstName.touched && formUser.controls.firstName.errors?.required"
+    >
+        Please enter your first name
+    </span>
+    <input type="text" placeholder="Last Name" formControlName="lastName">
+    <span  class=" alert-danger"
+    *ngIf="formUser.controls.lastName.touched && formUser.controls.lastName.errors?.required"
+    >
+        Please enter your last name
+    </span>
+    <input type="date" placeholder="Date Of Birth" formControlName="birthday">
+    <span  class=" alert-danger"
+    *ngIf="formUser.controls.birthday.touched && formUser.controls.birthday.errors"
+    >
+        Please enter your birthday
+    </span>
+    <input type="text" placeholder="Address" formControlName="address">
+    <span  class=" alert-danger"
+    *ngIf="formUser.controls.address.touched && formUser.controls.address.errors"
+    >
+        Please enter your address
+    </span>
+    
+    <input type="submit">
+
+</form>
